@@ -22,6 +22,8 @@ resource "aws_cloudfront_distribution" "cdn" {
     }
   }
 
+  aliases = [ "${var.subdomain}.${var.domain}" ]
+
   default_cache_behavior {
     target_origin_id       = local.s3_origin_id
     viewer_protocol_policy = "redirect-to-https"
