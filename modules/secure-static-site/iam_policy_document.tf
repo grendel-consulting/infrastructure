@@ -23,6 +23,22 @@ data "aws_iam_policy_document" "web_container_policy" {
   }
 }
 
+data "aws_iam_policy_document" "logging_policy" {
+  statement {
+    sid = "CloudFrontManagement"
+
+    actions = [ "logs:CreateLogGroup", "logs:CreateLogStream" ]
+    resources = [ "*" ]
+  }
+
+  statement {
+    sid = "CloudFrontLogging"
+
+    actions = [ "logs:PutLogEvents" ]
+    resources = [ "*" ]
+  }
+}
+
 data "aws_iam_policy_document" "assumption_policy" {
   statement {
     sid = "CloudFrontAssumption"
