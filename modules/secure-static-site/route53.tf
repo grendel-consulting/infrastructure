@@ -8,6 +8,21 @@ locals {
   ttl = 60
 }
 
+resource "aws_route53_record" "web_redirect" {
+  provider = aws.resources
+
+  name    = "${var.subdomain}.${var.domain}"
+  type    = "A"
+
+  alias {
+    name = aws_cloudfront_distribution.cdn.domain_name
+    evaluate_target_health = false
+    zone_id = aws_cloudfront_distribution.cdn.hosted_zone_id
+  }
+
+  zone_id         = data.aws_route53_zone.existing.zone_id
+}
+
 resource "aws_route53_record" "https_validation" {
   for_each = {
     for vo in aws_acm_certificate.https_cert.domain_validation_options : vo.domain_name => {
@@ -26,7 +41,6 @@ resource "aws_route53_record" "https_validation" {
 
   zone_id         = data.aws_route53_zone.existing.zone_id
   allow_overwrite = true
-
 
   # Required since create_before_destroy is set to true in the ACM certificate;
   # otherwise you'll see cyclic dependency errors when attempting destroy
