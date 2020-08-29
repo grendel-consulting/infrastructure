@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "web_container_policy" {
 
     condition {
       test     = "StringLike"
-      variable = "aws:${var.header}"
+      variable = "${var.header}"
       values   = ["${var.secret}"]
     }
 
