@@ -18,7 +18,7 @@ resource "aws_lambda_function" "secure_headers" {
   runtime = "nodejs10.x"
   role    = aws_iam_role.secure_headers.arn
 
-  filename         = "${local.fn}.zip"
+  filename         = data.archive_file.secure_headers_source.output_path
   source_code_hash = data.archive_file.secure_headers_source.output_base64sha256
   handler          = "index.handler"
   publish          = true
