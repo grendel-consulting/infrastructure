@@ -20,7 +20,7 @@ resource "aws_lambda_function" "secure_headers" {
 
   filename         = data.archive_file.secure_headers_source.output_path
   source_code_hash = data.archive_file.secure_headers_source.output_base64sha256
-  handler          = "index.handler"
+  handler          = "lambda.handler"
   publish          = true
 
   lifecycle {
