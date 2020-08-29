@@ -2,6 +2,11 @@ data "aws_iam_policy_document" "web_container_policy" {
   statement {
     sid = "CloudFrontReadable"
 
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
     # condition {
     #   test     = "StringLike"
     #   variable = "${var.header}"
