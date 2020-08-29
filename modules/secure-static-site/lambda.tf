@@ -13,7 +13,7 @@ resource "aws_lambda_function" "secure_headers" {
   function_name = local.fn
   description   = "Enrich origin-response with well-known security headers"
 
-  provider = aws.resources
+  provider = aws.cloudfront
 
   runtime = "nodejs10.x"
   role    = aws_iam_role.secure_headers.arn
