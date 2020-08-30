@@ -23,7 +23,7 @@ resource "aws_lambda_function" "secure_headers" {
   handler          = "lambda.handler"
   publish          = true
 
-  lifecycle {
-    ignore_changes = [source_code_hash]
-  }
+  # lifecycle {
+  #   ignore_changes = [source_code_hash]
+  # }
 }
