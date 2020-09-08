@@ -41,6 +41,11 @@ variable "force_destroy" {
   default     = "false"
 }
 
+variable "token" {
+  description = "Token from Google Search Console"
+  type        = string
+}
+
 variable "tags" {
   description = "List of extra tag blocks to be used"
   type        = list(object({ key : string, value : string }))

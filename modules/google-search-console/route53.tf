@@ -11,8 +11,8 @@ locals {
 resource "aws_route53_record" "domain_verification" {
   provider = aws.resources
 
-  name    = var.domain
-  records = [ var.verification_token ]
+  name    = "${var.subdomain}.${var.domain}"
+  records = [ var.token ]
   type    = "TXT"
   ttl     = local.ttl
 
