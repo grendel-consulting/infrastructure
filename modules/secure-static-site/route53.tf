@@ -48,3 +48,14 @@ resource "aws_route53_record" "https_validation" {
     create_before_destroy = true
   }
 }
+
+resource "aws_route53_record" "caa" {
+  provider = aws.resources
+
+  name    = "${var.subdomain}.${var.domain}"
+  records = [ "0 issue \"amazon.com\"" ]
+  type    = "CAA"
+  ttl     = local.ttl
+
+  zone_id         = data.aws_route53_zone.existing.zone_id
+}
