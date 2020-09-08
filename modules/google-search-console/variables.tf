@@ -3,7 +3,12 @@ variable "domain" {
   type        = string
 }
 
-variable "verification_token" {
+variable "subdomain" {
+  description = "Subdomain prefix for verification"
+  type        = string
+}
+
+variable "token" {
   description = "Token from Google Search Console"
   type        = string
 }

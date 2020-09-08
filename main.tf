@@ -19,6 +19,7 @@ module "secure_static_site" {
 
   domain    = "grendel-consulting.com"
   subdomain = "mta-sts"
+  token     = "google-site-verification=EAGZ-800Vy8480lV6oYu3Plvg_FTSw2qnCRMCioK_yk"
   header    = var.header_key
   secret    = var.header_secret
   contents  = "./data/mta-sts"
@@ -31,13 +32,3 @@ module "secure_static_site" {
   ]
 }
 
-module "google_search_console" {
-  source = "./modules/google-search-console"
-
-  providers = {
-    aws.resources = aws
-  }
-
-  domain    = "grendel-consulting.com"
-  verification_token = "google-site-verification=rbHbpKg-qg7k_eB0w2rbLXOlYUxu_39EchFOThhmYs0"
-}
