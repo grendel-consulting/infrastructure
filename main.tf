@@ -30,3 +30,14 @@ module "secure_static_site" {
     }
   ]
 }
+
+module "google_search_console" {
+  source = "./modules/google-search-console"
+
+  providers = {
+    aws.resources = aws
+  }
+
+  domain    = "grendel-consulting.com"
+  verification_token = "google-site-verification=rbHbpKg-qg7k_eB0w2rbLXOlYUxu_39EchFOThhmYs0"
+}
