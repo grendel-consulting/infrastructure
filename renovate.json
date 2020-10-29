@@ -11,7 +11,7 @@
     "fileMatch": [
       "./modules/**/*.tf$"
     ]
-  }
+  },
   "timezone": "Europe/London",
   "vulnerabilityAlerts": {
     "labels": [
