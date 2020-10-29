@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "config:base",
+    ":semanticCommitType(chore)",
+    "schedule:nonOfficeHours"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "timezone": "Europe/London",
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ],
+    "assignees": [
+      "@ramirezj"
+    ]
+  }
+}
