@@ -9,7 +9,7 @@
   ],
   "terraform": {
     "fileMatch": [
-      "./modules/**/*.tf$"
+      "^**/*.tf$"
     ]
   },
   "timezone": "Europe/London",
