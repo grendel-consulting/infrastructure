@@ -1,5 +1,24 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    ":semanticCommitType(chore)",
+    "schedule:nonOfficeHours"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "terraform": {
+    "fileMatch": [
+      "./modules/**/*.tf$"
+    ]
+  }
+  "timezone": "Europe/London",
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ],
+    "assignees": [
+      "@ramirezj"
+    ]
+  }
 }
