@@ -7,11 +7,6 @@
   "labels": [
     "dependencies"
   ],
-  "terraform": {
-    "fileMatch": [
-      "^**/*.tf$"
-    ]
-  },
   "timezone": "Europe/London",
   "vulnerabilityAlerts": {
     "labels": [
