@@ -47,6 +47,8 @@ resource "aws_cloudfront_distribution" "cdn" {
     compress = true
   }
 
+  default_root_object = var.index_page
+
   restrictions {
     geo_restriction {
       restriction_type = "none"

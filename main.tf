@@ -8,6 +8,13 @@ terraform {
       name = "infrastructure"
     }
   }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.4.0"
+    }
+  }
 }
 
 module "secure_static_site" {
