@@ -33,7 +33,6 @@ resource "aws_s3_bucket" "web_container" {
 
   versioning {
     enabled    = true
-    mfa_delete = true
   }
 
   website {
@@ -106,6 +105,5 @@ resource "aws_s3_bucket" "log_container" {
 
   versioning {
     enabled    = true
-    mfa_delete = true
   }
 }
