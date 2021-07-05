@@ -1,11 +1,18 @@
 terraform {
-  required_version = "~> 0.13"
+  required_version = "~> 0.14"
 
   backend "remote" {
     organization = "grendel-consulting"
 
     workspaces {
       name = "infrastructure"
+    }
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.4.0"
     }
   }
 }
