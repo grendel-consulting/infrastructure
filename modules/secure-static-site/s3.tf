@@ -22,13 +22,13 @@ resource "aws_s3_bucket" "web_container" {
      target_prefix = "log/${var.subdomain}.${var.domain}"
   }
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
+  # server_side_encryption_configuration {
+  #   rule {
+  #     apply_server_side_encryption_by_default {
+  #       sse_algorithm = "AES256"
+  #     }
+  #   }
+  # }
 
   versioning {
     enabled    = true
@@ -87,13 +87,13 @@ resource "aws_s3_bucket" "log_container" {
      target_prefix = "log/${var.subdomain}.${var.domain}-logs"
   }
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
+  # server_side_encryption_configuration {
+  #   rule {
+  #     apply_server_side_encryption_by_default {
+  #       sse_algorithm = "AES256"
+  #     }
+  #   }
+  # }
 
   versioning {
     enabled    = true
