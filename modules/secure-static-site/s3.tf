@@ -25,8 +25,7 @@ resource "aws_s3_bucket" "web_container" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.default_s3.arn
-        sse_algorithm     = "aws:kms"
+        sse_algorithm = "AES256"
       }
     }
   }
@@ -53,8 +52,6 @@ resource "aws_s3_bucket_object" "web_content" {
   key          = each.value
   source       = "${var.contents}/${each.value}"
   content_type = lookup(local.content_type_map, regex(local.content_type_regex, each.value).extension, local.content_type_default)
-
-  kms_key_id = aws_kms_key.default_s3.arn
 }
 
 resource "aws_s3_bucket_object" "default_index" {
@@ -66,8 +63,6 @@ resource "aws_s3_bucket_object" "default_index" {
   key          = var.index_page
   source       = "${path.module}/${local.placeholder_index_page}"
   content_type = lookup(local.content_type_map, regex(local.content_type_regex, local.placeholder_index_page).extension, local.content_type_default)
-
-  kms_key_id = aws_kms_key.default_s3.arn
 }
 
 resource "aws_s3_bucket_object" "default_error" {
@@ -79,8 +74,6 @@ resource "aws_s3_bucket_object" "default_error" {
   key          = var.error_page
   source       = "${path.module}/${local.placeholder_error_page}"
   content_type = lookup(local.content_type_map, regex(local.content_type_regex, local.placeholder_error_page).extension, local.content_type_default)
-
-  kms_key_id = aws_kms_key.default_s3.arn
 }
 
 resource "aws_s3_bucket" "log_container" {
@@ -97,8 +90,7 @@ resource "aws_s3_bucket" "log_container" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.default_s3.arn
-        sse_algorithm     = "aws:kms"
+        sse_algorithm = "AES256"
       }
     }
   }
