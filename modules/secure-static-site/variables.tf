@@ -16,6 +16,7 @@ variable "header" {
 variable "secret" {
   description = "Custom HTTP secret passed from CloudFront to S3 to prevent bypass"
   type        = string
+  sensitive   = true
 }
 
 variable "contents" {

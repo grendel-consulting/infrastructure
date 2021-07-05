@@ -7,12 +7,6 @@ data "aws_iam_policy_document" "web_container_policy" {
       identifiers = ["*"]
     }
 
-    # condition {
-    #   test     = "StringLike"
-    #   variable = "${var.header}"
-    #   values   = ["${var.secret}"]
-    # }
-
     actions = [
       "s3:GetObject"
     ]

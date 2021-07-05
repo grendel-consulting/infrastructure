@@ -22,8 +22,4 @@ resource "aws_lambda_function" "secure_headers" {
   source_code_hash = data.archive_file.secure_headers_source.output_base64sha256
   handler          = "lambda.handler"
   publish          = true
-
-  # lifecycle {
-  #   ignore_changes = [source_code_hash]
-  # }
 }
