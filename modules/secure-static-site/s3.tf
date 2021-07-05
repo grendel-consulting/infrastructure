@@ -17,6 +17,11 @@ resource "aws_s3_bucket" "web_container" {
   acl    = "private"
   policy = data.aws_iam_policy_document.web_container_policy.json
 
+  logging {
+     target_bucket = aws_s3_bucket.log_container.id
+     target_prefix = "log/${var.subdomain}.${var.domain}"
+  }
+
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
@@ -77,4 +82,30 @@ resource "aws_s3_bucket_object" "default_error" {
   content_type = lookup(local.content_type_map, regex(local.content_type_regex, local.placeholder_error_page).extension, local.content_type_default)
 
   kms_key_id = aws_kms_key.default_s3.arn
+}
+
+resource "aws_s3_bucket" "log_container" {
+  provider = aws.resources
+
+  bucket = "${var.subdomain}.${var.domain}-logs"
+  acl    = "log-delivery-write"
+
+  logging {
+     target_bucket = "${var.subdomain}.${var.domain}-logs"
+     target_prefix = "log/${var.subdomain}.${var.domain}-logs"
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.default_s3.arn
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+
+  versioning {
+    enabled    = true
+    mfa_delete = true
+  }
 }
