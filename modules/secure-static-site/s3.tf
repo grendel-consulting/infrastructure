@@ -27,7 +27,8 @@ resource "aws_s3_bucket" "web_container" {
   }
 
   versioning {
-    enabled = true
+    enabled    = true
+    mfa_delete = true
   }
 
   website {
