@@ -86,7 +86,7 @@ resource "aws_s3_bucket_object" "default_error" {
 resource "aws_s3_bucket" "log_container" {
   provider = aws.resources
 
-  bucket = "${var.subdomain}.${var.domain}-logs"
+  bucket = "${var.subdomain}.${var.domain}-logging"
   acl    = "log-delivery-write"
 
   logging {
