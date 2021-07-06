@@ -1,10 +1,10 @@
 provider "aws" {
-  region  = "eu-west-1"
+  region = "eu-west-1"
 }
 
 provider "aws" {
-  region  = "us-east-1"
-  alias   = "cloudfront"
+  region = "us-east-1"
+  alias  = "cloudfront"
 }
 
 provider "archive" {}

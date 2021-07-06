@@ -3,9 +3,7 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = ">= 3.4.0"
+      configuration_aliases = [ aws.resources, aws.cloudfront ]
     }
   }
 }
-
-provider "aws" { alias = "resources" }
-provider "aws" { alias = "cloudfront" }
