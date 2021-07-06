@@ -27,6 +27,8 @@ resource "aws_lambda_function" "secure_headers" {
     mode = "Active"
   }
 
+  reserved_concurrent_executions = 0
+
   # lifecycle {
   #   ignore_changes = [source_code_hash]
   # }
