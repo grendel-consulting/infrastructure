@@ -39,3 +39,12 @@ rule "terraform_unused_declarations" {
 rule "terraform_unused_required_providers" {
   enabled = true
 }
+
+rule "terraform_naming_convention" {
+  enabled = true
+  format  = "none"
+
+  locals {
+    format = "snake_case"
+  }
+}
